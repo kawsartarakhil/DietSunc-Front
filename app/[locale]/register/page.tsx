@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Mail, Lock, User, Eye, EyeOff } from "lucide-react";
 import AuthLayout from "@/components/AuthLayout";
 import { useTranslations, useLocale } from "next-intl";
+import { fetchApi } from "@/lib/api";
 
 export default function RegisterPage() {
   const t = useTranslations("RegisterPage");
@@ -15,28 +16,25 @@ export default function RegisterPage() {
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
-  const handleRegister = async (e: React.FormEvent) => {
-    e.preventDefault();
+const handleRegister = async (e: React.FormEvent) => {
+  e.preventDefault();
 
-    try {
-      const res = await fetch("http://localhost:5000/api/auth/register", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, email, password }),
-      });
+  try {
+    const data = await fetchApi("/api/auth/register", {
+      method: "POST",
+      body: JSON.stringify({ name, email, password }),
+    });
 
-      const data = await res.json();
-
-      if (data.success) {
-        alert(t("success"));
-      } else {
-        alert(data.message || t("failed"));
-      }
-    } catch (err) {
-      console.error(err);
-      alert(t("error"));
+    if (data.success) {
+      alert(t("success"));
+    } else {
+      alert(data.message || t("failed"));
     }
-  };
+  } catch (err) {
+    console.error(err);
+    alert(t("error"));
+  }
+};
 
   return (
     <AuthLayout>

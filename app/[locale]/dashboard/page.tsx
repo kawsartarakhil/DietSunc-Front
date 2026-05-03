@@ -5,6 +5,7 @@ import userPic from '@/public/userPic.png';
 import { TrendingUp, Droplet, Plus, Heart, Calendar, FileText, X, Moon, Sun } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
+import { authFetch } from '@/lib/api';
 
 export default function DashboardPage() {
   const t = useTranslations('DashboardPage');
@@ -41,47 +42,38 @@ export default function DashboardPage() {
     fetchDashboardData();
   }, []);
 
-  const fetchDashboardData = async () => {
-    try {
-      const token = localStorage.getItem('token');
-      const headers = { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' };
-
-      const profRes = await fetch('http://localhost:5000/api/profile', { headers });
-      const profData = await profRes.json();
-      if (profData.success) {
-        setProfile(profData.profile);
-        if (profData.profile.groceryChecklist) {
-          setCheckedGroceries(profData.profile.groceryChecklist);
-        }
+const fetchDashboardData = async () => {
+  try {
+    const profData = await authFetch('/api/profile');
+    if (profData.success) {
+      setProfile(profData.profile);
+      if (profData.profile.groceryChecklist) {
+        setCheckedGroceries(profData.profile.groceryChecklist);
       }
-
-      const mealRes = await fetch('http://localhost:5000/api/meals/generate', { headers });
-      const mealData = await mealRes.json();
-      if (mealData.success) setTodayMeal(mealData.meal);
-
-      const planRes = await fetch('http://localhost:5000/api/meals/generate-plan', { headers });
-      const planData = await planRes.json();
-      if (planData.success) {
-        setMealPlan(planData.mealPlan);
-        setGroceryList(planData.groceryList);
-      }
-    } catch (err) {
-      console.error(err);
     }
-  };
+
+    const mealData = await authFetch('/api/meals/generate');
+    if (mealData.success) setTodayMeal(mealData.meal);
+
+    const planData = await authFetch('/api/meals/generate-plan');
+    if (planData.success) {
+      setMealPlan(planData.mealPlan);
+      setGroceryList(planData.groceryList);
+    }
+  } catch (err) {
+    console.error(err);
+  }
+};
 
   const handleRecommend = async () => {
     try {
       const ingredients = fridgeIngredients.split(',').map(s => s.trim()).filter(Boolean);
       if (!ingredients.length) return;
       
-      const token = localStorage.getItem('token');
-      const res = await fetch('http://localhost:5000/api/meals/recommend', {
-        method: 'POST',
-        headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ingredients })
-      });
-      const data = await res.json();
+      const data = await authFetch('/api/meals/recommend', {
+  method: 'POST',
+  body: JSON.stringify({ ingredients })
+});
       if (data.success) {
         setBestMatch(data.bestMatch);
         setOtherMatches(data.meals.slice(1, 3));
@@ -93,16 +85,10 @@ export default function DashboardPage() {
 
   const handleFavorite = async (mealId: string) => {
     try {
-      const token = localStorage.getItem('token');
-
-      await fetch('http://localhost:5000/api/profile/favorites', {
-        method: 'POST',
-        headers: {
-          'Authorization': `Bearer ${token}`,
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ mealId })
-      });
+      await authFetch('/api/profile/favorites', {
+  method: 'POST',
+  body: JSON.stringify({ mealId })
+});
 
       showAlert('❤️ Added to favorites');
     } catch (err) {

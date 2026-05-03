@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { Heart, Clock, Flame } from 'lucide-react';
 import { useTranslations } from 'next-intl';
-
+import { authFetch } from '@/lib/api'
 export default function FavoritesPage() {
   const t = useTranslations('FavoritesPage');
   const [favorites, setFavorites] = useState<any[]>([]);
@@ -13,13 +13,8 @@ export default function FavoritesPage() {
   }, []);
 
   const fetchFavorites = async () => {
-
     try {
-      const token = localStorage.getItem('token');
-      const res = await fetch('http://localhost:5000/api/profile/favorites', {
-        headers: { 'Authorization': `Bearer ${token}` }
-      });
-      const data = await res.json();
+      const data = await authFetch('/api/profile/favorites');
       if (data.success) {
         setFavorites(data.favorites || []);
       }
@@ -35,17 +30,14 @@ export default function FavoritesPage() {
       // Optimistically remove from UI
       setFavorites(prev => prev.filter(m => m._id !== mealId));
       
-      const token = localStorage.getItem('token');
-      await fetch('http://localhost:5000/api/profile/favorites', {
+      await authFetch('/api/profile/favorites', {
         method: 'POST',
-        headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' },
-        body: JSON.stringify({ mealId })
+        body: JSON.stringify({ mealId }),
       });
     } catch (err) {
       console.error(err);
     }
   };
-
   if (loading) {
     return <div className="flex items-center justify-center min-h-[50vh] text-[#0bb28a] font-bold">  {t('loading')}</div>;
   }

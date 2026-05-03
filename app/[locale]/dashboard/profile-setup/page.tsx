@@ -11,6 +11,7 @@ import {
 } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { useLocale, useTranslations } from 'next-intl';
+import { authFetch } from '@/lib/api';
 
 export default function ProfileSetupPage() {
   const router = useRouter();
@@ -23,70 +24,62 @@ export default function ProfileSetupPage() {
   const [height, setHeight] = useState('170');
   const [goal, setGoal] = useState('Lose Weight');
 
-  useEffect(() => {
-    const fetchProfile = async () => {
-      try {
-        const token = localStorage.getItem('token');
-        if (!token) return;
-
-        const res = await fetch('http://localhost:5000/api/profile', {
-          headers: { Authorization: `Bearer ${token}` }
-        });
-
-        const data = await res.json();
-
-        if (data.success && data.profile) {
-          setAge(String(data.profile.age));
-          setGender(data.profile.gender);
-          setWeight(String(data.profile.weight));
-          setHeight(String(data.profile.height));
-
-          setGoal(
-            data.profile.goal === 'lose'
-              ? 'Lose Weight'
-              : data.profile.goal === 'gain'
-              ? 'Gain Muscle'
-              : 'Maintain'
-          );
-        }
-      } catch (err) {
-        console.error(err);
-      }
-    };
-
-    fetchProfile();
-  }, []);
-
-  const handleCalculate = async () => {
+ useEffect(() => {
+  const fetchProfile = async () => {
     try {
-      const backendGoal =
-        goal === 'Lose Weight'
-          ? 'lose'
-          : goal === 'Gain Muscle'
-          ? 'gain'
-          : 'maintain';
+      const token = localStorage.getItem('token');
+      if (!token) return;
 
-      await fetch('http://localhost:5000/api/profile', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: 'Bearer ' + localStorage.getItem('token')
-        },
-        body: JSON.stringify({
-          age: Number(age),
-          gender,
-          weight: Number(weight),
-          height: Number(height),
-          goal: backendGoal
-        })
-      });
+      const data = await authFetch('/api/profile');   // GET uses authFetch
 
-      router.push(`/${locale}/dashboard`);
+      if (data.success && data.profile) {
+        setAge(String(data.profile.age));
+        setGender(data.profile.gender);
+        setWeight(String(data.profile.weight));
+        setHeight(String(data.profile.height));
+
+        setGoal(
+          data.profile.goal === 'lose'
+            ? 'Lose Weight'
+            : data.profile.goal === 'gain'
+            ? 'Gain Muscle'
+            : 'Maintain'
+        );
+      }
     } catch (err) {
       console.error(err);
-      router.push(`/${locale}/dashboard`);
     }
   };
+
+  fetchProfile();
+}, []);
+
+const handleCalculate = async () => {
+  try {
+    const backendGoal =
+      goal === 'Lose Weight'
+        ? 'lose'
+        : goal === 'Gain Muscle'
+        ? 'gain'
+        : 'maintain';
+
+    await authFetch('/api/profile', {
+      method: 'POST',
+      body: JSON.stringify({
+        age: Number(age),
+        gender,
+        weight: Number(weight),
+        height: Number(height),
+        goal: backendGoal
+      }),
+    });
+
+    router.push(`/${locale}/dashboard`);
+  } catch (err) {
+    console.error(err);
+    router.push(`/${locale}/dashboard`);
+  }
+};
 
   const w = Number(weight) || 0;
   const h = Number(height) || 1;

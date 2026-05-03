@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { CalendarDays, Clock, Flame, ListFilter, PlayCircle, Heart, X } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
+import { authFetch } from '@/lib/api';
 
 export default function MealsPage() {
   const t = useTranslations('MealsPage');
@@ -16,15 +17,10 @@ export default function MealsPage() {
   }, []);
 
   const fetchMealPlan = async () => {
-    
     try {
-      const token = localStorage.getItem('token');
-      const planRes = await fetch('http://localhost:5000/api/meals/generate-plan', { 
-        headers: { 'Authorization': `Bearer ${token}` } 
-      });
-      const planData = await planRes.json();
-      if (planData.success) {
-        setMealPlan(planData.mealPlan);
+      const data = await authFetch('/api/meals/generate-plan');
+      if (data.success) {
+        setMealPlan(data.mealPlan);
       }
       setLoading(false);
     } catch (err) {
@@ -35,17 +31,16 @@ export default function MealsPage() {
 
   const handleFavorite = async (mealId: string) => {
     try {
-      const token = localStorage.getItem('token');
-      await fetch('http://localhost:5000/api/profile/favorites', {
+      await authFetch('/api/profile/favorites', {
         method: 'POST',
-        headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' },
-        body: JSON.stringify({ mealId })
+        body: JSON.stringify({ mealId }),
       });
       router.push('/dashboard/favorites');
     } catch (err) {
       console.error(err);
     }
   };
+
 
   if (loading) {
 return (

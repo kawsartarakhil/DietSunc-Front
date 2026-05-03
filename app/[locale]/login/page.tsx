@@ -6,7 +6,7 @@ import { Mail, Lock, Eye, EyeOff } from "lucide-react";
 import AuthLayout from "@/components/AuthLayout";
 import { useRouter } from "next/navigation";
 import { useLocale, useTranslations } from "next-intl";
-
+import {  fetchApi } from "@/lib/api";
 export default function LoginPage() {
   const router = useRouter();
   const locale = useLocale();
@@ -16,31 +16,26 @@ export default function LoginPage() {
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
-  const handleLogin = async (e: React.FormEvent) => {
-    e.preventDefault();
+const handleLogin = async (e: React.FormEvent) => {
+  e.preventDefault();
 
-    try {
-      const res = await fetch("http://localhost:5000/api/auth/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password }),
-      });
+  try {
+    const data = await fetchApi("/api/auth/login", {
+      method: "POST",
+      body: JSON.stringify({ email, password }),
+    });
 
-      const data = await res.json();
-
-      if (data.success) {
-        localStorage.setItem("token", data.token);
-
-        router.push(`/${locale}/dashboard/profile-setup`);
-      } else {
-        alert(data.message || t("failed"));
-      }
-    } catch (err) {
-      console.error(err);
-      alert(t("error"));
+    if (data.success) {
+      localStorage.setItem("token", data.token);
+      router.push(`/${locale}/dashboard/profile-setup`);
+    } else {
+      alert(data.message || t("failed"));
     }
-  };
-
+  } catch (err) {
+    console.error(err);
+    alert(t("error"));
+  }
+};
   return (
     <AuthLayout>
       <div className="bg-white dark:bg-gray-900 rounded-[2rem] p-6 md:p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] w-full">
