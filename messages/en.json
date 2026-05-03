@@ -1,0 +1,299 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About us",
+    "contact": "Contact"
+  },
+  "hero": {
+    "badge": "Transforming nutrition with AI",
+    "title1": "Your AI",
+    "title2": "Nutrition",
+    "title3": "Assistant",
+    "subtitle": "Precision-engineered meal planning that adapts to your biology, preferences, and lifestyle in real-time.",
+    "getStarted": "Get Started",
+    "login": "Login",
+    "join": "Join 10,000+ users on their journey"
+  },
+  "HomePage": {
+    "badge": "Transforming nutrition with AI",
+    "title1": "Your AI",
+    "title2": "Nutrition",
+    "title3": "Assistant",
+    "description": "Precision-engineered meal planning that adapts to your biology, preferences, and lifestyle in real-time.",
+    "getStarted": "Get Started",
+    "login": "Login",
+    "users": "Join 10,000+ users on their journey",
+
+    "dailyProgress": "Daily Progress",
+    "kcal": "1,400 kcal",
+    "protein": "85g Protein",
+
+    "featuresTitle": "Intelligent Wellness at Your Fingertips",
+    "featuresDesc": "Our AI engine processes millions of data points to create a nutrition strategy as unique as your DNA.",
+
+    "smartMeals": "Smart Meal Recommendations",
+    "smartMealsDesc": "Get suggestions based on your broad markers, activity levels, and palate preferences.",
+
+    "mealGenerator": "AI Meal Generator",
+    "mealGeneratorDesc": "Instantly generate recipes from the ingredients already in your fridge.",
+
+    "dailyPlans": "Daily Meal Plans",
+    "dailyPlansDesc": "Dynamic scheduling that shifts with your calendar and metabolic needs.",
+
+    "item1": "Organic Kale (200g)",
+    "item2": "Wild Caught Salmon",
+    "item3": "Avocado (2)",
+
+    "groceryTitle": "Grocery List Generator",
+    "groceryDesc": "Auto-optimized shopping lists categorized by aisle for peak efficiency.",
+
+    "ctaTitle": "Ready to sync your diet?",
+    "ctaDesc": "Start your 14-day premium trial today. No credit card required.",
+    "ctaBtn": "Get Started Now",
+    "pricing": "See Pricing"
+  },
+  "AboutPage": {
+  "missionBadge": "Our Mission",
+  "heroTitle1": "Redefining Nutrition with",
+  "heroTitle2": "Intelligence",
+  "heroTitle3": "and Empathy",
+  "heroDesc": "At DietSync, we believe that optimal health isn't a guessing game. We've combined cutting-edge artificial intelligence with deep nutritional science to create a platform that understands your body as well as you do.",
+
+  "storyTitle": "The DietSync Story",
+  "story1": "Born out of the frustration of one-size-fits-all diet plans, DietSync was founded by a team of nutritionists, data scientists, and engineers who shared a common vision: to make personalized nutrition accessible to everyone.",
+  "story2": "We realized that the human body is too complex for generic meal plans. Metabolism, lifestyle, genetics, and even daily stress levels play crucial roles in how we process food.",
+  "story3": "Today, DietSync is more than just an app; it's a wellness companion that adapts to you.",
+
+  "storyCardTitle1": "Driven by Data,",
+  "storyCardTitle2": "Powered by Purpose",
+
+  "valuesTitle": "Our Core Values",
+
+  "communityTitle": "Community First",
+  "communityDesc": "We build for our users. Every feature, update, and recommendation is designed to empower our community.",
+
+  "scienceTitle": "Scientific Integrity",
+  "scienceDesc": "We rely on peer-reviewed nutritional science and evidence-based practices.",
+
+  "innovationTitle": "Continuous Innovation",
+  "innovationDesc": "We continuously improve our algorithms to provide the most accurate guidance.",
+
+  "activeUsers": "Active Users",
+  "mealsPlanned": "Meals Planned",
+  "satisfaction": "Satisfaction Rate",
+  "support": "AI Support"
+},
+"ContactPage": {
+  "title1": "Get in",
+  "title2": "Touch",
+  "subtitle": "Have questions about your nutrition journey? Our team is here to help you achieve your goals.",
+
+  "visitTitle": "Visit Us",
+  "visitAddress1": "123 Wellness Avenue, Suite 400",
+  "visitAddress2": "Health City, HC 90210",
+
+  "callTitle": "Call Us",
+  "phone": "+1 (555) 123-4567",
+  "hours": "Mon-Fri, 9am - 6pm EST",
+
+  "emailTitle": "Email Us",
+  "email1": "support@dietsync.example.com",
+  "email2": "hello@dietsync.example.com",
+
+  "formTitle": "Send a Message",
+  "fullName": "Full Name",
+  "namePlaceholder": "John Doe",
+  "emailAddress": "Email Address",
+  "emailPlaceholder": "john@example.com",
+  "message": "Message",
+  "messagePlaceholder": "How can we help you?",
+  "sendBtn": "Send Message"
+},
+"RegisterPage": {
+  "login": "Login",
+  "signup": "Sign Up",
+  "title": "Create an account",
+  "subtitle": "Please enter your details to sign up.",
+  "fullName": "Full Name",
+  "namePlaceholder": "John Doe",
+  "email": "Email Address",
+  "emailPlaceholder": "hello@dietsync.app",
+  "password": "Password",
+  "signupBtn": "Sign Up",
+  "haveAccount": "Already have an account?",
+  "loginLink": "Log in",
+  "success": "Registration successful! Please login.",
+  "failed": "Registration failed",
+  "error": "An error occurred during registration"
+},
+  "LoginPage": {
+  "login": "Login",
+  "signup": "Sign Up",
+  "title": "Welcome back",
+  "subtitle": "Please enter your details to sign in.",
+  "email": "Email Address",
+  "emailPlaceholder": "hello@dietsync.app",
+  "password": "Password",
+  "forgot": "Forgot password?",
+  "remember": "Remember for 30 days",
+  "loginBtn": "Login",
+  "noAccount": "Don't have an account?",
+  "signupLink": "Sign up",
+  "error": "An error occurred during login",
+  "failed": "Login failed"
+},
+"ProfileSetupPage": {
+  "title": "Start Your Wellness Journey",
+  "subtitle": "Tell us a little about yourself so we can create a personalized nutrition plan tailored to your body's unique needs.",
+
+  "age": "Age",
+  "gender": "Gender",
+  "female": "Female",
+  "male": "Male",
+  "other": "Other",
+
+  "weight": "Weight (kg)",
+  "height": "Height (cm)",
+
+  "goal": "Your Primary Goal",
+  "lose": "Lose Weight",
+  "maintain": "Maintain",
+  "gain": "Gain Muscle",
+
+  "save": "Save & Calculate My Plan",
+
+  "precisionTitle": "Precision Nutrition",
+  "precisionDesc": "Our algorithm uses scientific metabolic markers to determine your exact requirements.",
+
+  "metricsTitle": "Your Personalized Metrics",
+  "live": "Live Preview",
+
+  "bmi": "Body Mass Index",
+  "underweight": "Underweight",
+  "overweight": "Overweight",
+  "healthy": "Healthy Weight",
+
+  "dailyTarget": "Daily Target",
+  "hydration": "Hydration Plan",
+  "movement": "Ideal Movement",
+
+  "foodsTitle": "Foods to Minimize",
+  "foodsDesc": "Based on your goal, reducing these items will accelerate your progress.",
+
+  "nextSteps": "Next Steps",
+  "nextDesc": "Your dashboard is ready with a curated 7-day meal plan based on these results.",
+
+  "step1": "Profile Configured",
+  "step2": "Review Meal Plan",
+  "step3": "Track First Meal",
+
+  "dashboard": "Go to Dashboard"
+},
+"Sidebar": {
+  "dashboard": "Dashboard",
+  "meals": "Meals",
+  "favorites": "Favorites",
+  "profile": "Profile",
+  "home": "Home",
+  "logout": "Logout",
+  "selectLanguage": "Select Language",
+  "close": "Close"
+},
+"dashboard": {
+  "title": "Health Center",
+  "subtitle": "Welcome back, your wellness journey is progressing.",
+  "dailySummary": "Daily Summary",
+  "onTrack": "On Track",
+  "calorieTarget": "Calorie Target",
+  "currentBMI": "Current BMI",
+  "waterIntake": "Water Intake",
+  "macroSplit": "Macro Split",
+  "adjustTargets": "Adjust Targets",
+  "todaysInspiration": "Today's Inspiration",
+  "generateMeal": "Generate Meal",
+  "fullMealPlan": "Full Meal Plan",
+  "generatePlan": "Generate Meal Plan",
+  "smartRecommendation": "Smart Recommendations",
+  "fridgeTitle": "What's in your fridge?",
+  "fridgeSubtitle": "Enter ingredients and we'll find the perfect meal.",
+  "findMatches": "Find Matches",
+  "addToPlan": "Add to Plan",
+  "featuredRecipe": "Featured Recipe",
+  "groceryList": "Grocery List",
+  "viewList": "View Full List",
+  "topMatch": "Top Match",
+  "score": "Score"
+},
+"DashboardPage": {
+  "title": "Vitality Hub",
+  "welcome": "Welcome back, your wellness journey is thriving.",
+  "todayDate": "Today's Date",
+
+  "dailySummary": "Daily Summary",
+  "onTrack": "On Track",
+
+  "calorieTarget": "Calorie Target",
+  "bmi": "Current BMI",
+  "waterIntake": "Water Intake",
+
+  "inspiration": "Today's Inspiration",
+  "generateMeal": "Generate Today's Meal",
+  "featuredRecipe": "Featured Recipe",
+  "defaultMeal": "Mediterranean Power Bowl",
+  "addToPlan": "Add to Plan",
+
+  "macroSplit": "Macro Split",
+  "adjustTargets": "Adjust Targets",
+
+  "fullMealPlan": "Full Meal Plan",
+  "generateFullMealPlan": "Generate Full Meal Plan",
+  "snack": "Snack",
+  "groceryList": "Grocery List",
+
+  "smartRecommendation": "Smart Recommendation",
+  "fridgeTitle": "What's in your fridge?",
+  "fridgeDesc":"Tell us what ingredients you have, and we'll find the perfect match.",
+  "fridgePlaceholder": "e.g. spinach, eggs, mushrooms, avocado...",
+  "bestMatches":"Find Best Matches",
+  "findMatches": "Find Best Matches",
+  "VFL": "View Full List →",
+  "popular": "Popular",
+
+  "topMatch": "Top Match",
+  "score": "Score",
+
+  "ingredients": "Ingredients",
+  "instructions": "Instructions",
+  "addToFavorites": "Add to Favorites",
+
+  "highProtein": "High Protein",
+  "glutenFree": "Gluten Free",
+  "prepTime": "20 min prep"
+},
+"MealsPage": {
+  "title": "Your Weekly Meals",
+  "subtitle": "These meals are generated based on your biological markers, current weight, and primary goal. Eat well and thrive!",
+  "filter": "Filter",
+  "regeneratePlan": "Regenerate Plan",
+  "loading": "Loading your meals...",
+  "breakfast": "Breakfast",
+  "lunch": "Lunch",
+  "dinner": "Dinner",
+  "snack": "Snack",
+  "viewRecipe": "View Recipe",
+  "ingredients": "Ingredients",
+  "instructions": "Instructions",
+  "addToFavorites": "Add to Favorites",
+  "defaultInstructions": "Mix ingredients and cook until ready. Enjoy!"
+},
+  "FavoritesPage": {
+    "title": "Your Favorite Meals",
+    "subtitle": "All your saved and loved recipes in one place.",
+    "empty": "No favorites yet. Go to the dashboard and heart a meal to save it here!",
+    "loading": "Loading favorites..."
+
+  },
+  "authPage":{
+      "description": "Your journey to a healthier lifestyle starts with a single, mindful choice. Track, learn, and grow with precision."
+  }
+}
